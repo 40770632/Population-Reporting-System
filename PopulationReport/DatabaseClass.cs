@@ -106,35 +106,6 @@ public class DatabaseClass
         }
     }
 
-    /// <summary>
-    /// Retrieves statistics for language speakers of Chinese, English, Hindi, Spanish, and Arabic.
-    /// </summary>
-    public void GetLanguageSpeakers()
-    {
-        using (MySqlConnection conn = new MySqlConnection(connectionString))
-        {
-            try
-            {
-                conn.Open();
-                string query = "SELECT Language, SUM((Population * Percentage) / 100) AS TotalSpeakers FROM countrylanguage " +
-                               "JOIN country ON countrylanguage.CountryCode = country.Code " +
-                               "WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') " +
-                               "GROUP BY Language ORDER BY TotalSpeakers DESC;";
-
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        Console.WriteLine("\n🗣️ Language Speaker Statistics:");
-                        Console.WriteLine("---------------------------------");
-
-                        while (reader.Read())
-                        {
-                            Console.WriteLine($"Language: {reader["Language"]}, Total Speakers: {reader["TotalSpeakers"]}");
-                        }
-                    }
-                }
-            }
             catch (Exception ex)
             {
                 Console.WriteLine(" Error fetching language data: " + ex.Message);
