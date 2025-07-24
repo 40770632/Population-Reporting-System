@@ -53,7 +53,22 @@ public class DatabaseClass
         {
             try
             {
-                
+                conn.Open();
+
+                // Check if the continent exists before proceeding
+                string checkQuery = "SELECT COUNT(*) FROM country WHERE Continent = @Continent;";
+                using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@Continent", continent);
+                    int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+                        Console.WriteLine("\n Continent not found! Please check the spelling and try again.");
+                        return;
+                    }
+                }
+
                 // Retrieve top N cities in the specified continent
                 string query = "SELECT city.Name, city.CountryCode, city.Population FROM city " +
                                "JOIN country ON city.CountryCode = country.Code " +
