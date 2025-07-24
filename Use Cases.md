@@ -1,125 +1,295 @@
-**Population Reporting System - Use Case Document**
+Use Case 1: Country Population Report
+Preconditions:
 
----
+User is authenticated.
 
-**Use Case 1: Country Population Report**
+System has access to country population data.
 
-**Preconditions:**
+Trigger:
 
-* The user must be authenticated.
-* The system must have access to a database containing country population data.
+User selects "View Country Population Report."
 
-**Trigger:**
+Main Flow:
 
-* The user selects the option to generate a population report for countries.
+User selects the report option.
 
-**Main Flow:**
+System fetches country population data.
 
-1. The user chooses the "View Country Population Report" option.
-2. The system fetches country population data from the database.
-3. The data is sorted in descending order by population.
-4. The system displays each country's name and population details.
+Data is sorted descending by population.
 
-**Expected Outcome:**
+System displays country names and population details.
 
-* A detailed country population report is displayed in descending order of population.
+Expected Outcome:
 
-**Exceptions:**
+User sees a detailed report of countries sorted by population.
 
-* If the database connection fails, an error message is displayed.
+Exceptions:
 
----
+If database connection fails, show an error message.
 
-**Use Case 2: Retrieve Top Populated Cities**
+Use Case 2: Retrieve Top Populated Cities
+Preconditions:
 
-**Preconditions:**
+User is authenticated.
 
-* The user must be authenticated.
-* The system must have a valid dataset of city population information.
-* The user should provide the number of cities to retrieve (Top N).
+City population data is available.
 
-**Trigger:**
+User provides number N.
 
-* The user selects the "Retrieve Top N Populated Cities" option and specifies the number of cities.
+Trigger:
 
-**Main Flow:**
+User selects "Retrieve Top N Populated Cities."
 
-1. The user selects the "Retrieve Top N Populated Cities" option.
-2. The system prompts the user to enter the number of cities (N).
-3. The user provides a valid number.
-4. The system retrieves city population data from the database.
-5. The data is sorted in descending order by population, and the top N cities are selected.
-6. The system displays the results in a structured format.
+Main Flow:
 
-**Expected Outcome:**
+User selects the option.
 
-* The system successfully presents the top N most populated cities.
+System prompts for number N.
 
-**Exceptions:**
+User enters N.
 
-* If the user enters an invalid number, they are prompted to input a valid value.
-* If data retrieval fails, an appropriate error message is displayed.
+System fetches city population data.
 
----
+System sorts data descending and selects top N.
 
-**Use Case 3: User Authentication**
+System displays the top N cities.
 
-**Preconditions:**
+Expected Outcome:
 
-* The user must have an existing account.
-* The system must have access to stored user credentials.
+User sees top N most populated cities.
 
-**Trigger:**
+Exceptions:
 
-* The user attempts to log in by providing credentials.
+Invalid N input: prompt again.
 
-**Main Flow:**
+Data fetch failure: show error.
 
-1. The user accesses the login interface.
-2. The system requests a username and password.
-3. The user enters their login credentials.
-4. The system verifies the credentials against the database.
-5. If successful, the user is redirected to the main dashboard.
+Use Case 3: User Authentication
+Preconditions:
 
-**Expected Outcome:**
+User has an account.
 
-* The user successfully logs into the system.
+Credentials are stored.
 
-**Exceptions:**
+Trigger:
 
-* If credentials are incorrect, an error message is displayed.
-* If a system failure occurs, the user is notified of a temporary issue.
+User attempts to log in.
 
----
+Main Flow:
 
-**Use Case 4: Modify Country Population Data (Admin)**
+User enters username and password.
 
-**Preconditions:**
+System verifies credentials.
 
-* The user must be logged in with administrator privileges.
-* The system must provide an interface for modifying country population data.
+If valid, user is logged in and redirected.
 
-**Trigger:**
+Expected Outcome:
 
-* The administrator selects the option to update country population details.
+User gains access.
 
-**Main Flow:**
+Exceptions:
 
-1. The administrator logs into the system.
-2. The administrator selects "Modify Country Population Data."
-3. The system prompts for the name of the country to be modified.
-4. The administrator selects a country.
-5. The system displays the current population data.
-6. The administrator enters the updated population value.
-7. The system updates the database and confirms the changes.
+Invalid credentials: show error.
 
-**Expected Outcome:**
+System failure: notify user.
 
-* The population data for the selected country is updated successfully.
+Use Case 4: Modify Country Population Data (Admin)
+Preconditions:
 
-**Exceptions:**
+User logged in as admin.
 
-* If the specified country does not exist, the system returns an error.
-* If an invalid value is entered, the system requests valid input.
+System allows data modification.
 
----
+Trigger:
+
+Admin selects modify option.
+
+Main Flow:
+
+Admin logs in and selects modification.
+
+Admin selects country.
+
+System displays current data.
+
+Admin enters updated population.
+
+System validates and updates database.
+
+System confirms update.
+
+Expected Outcome:
+
+Population data updated.
+
+Exceptions:
+
+Country not found: error.
+
+Invalid input: prompt again.
+
+Use Case 5: Retrieve Language Speaker Statistics
+Preconditions:
+
+User authenticated.
+
+Language population data available.
+
+Trigger:
+
+User selects "View Language Speaker Statistics."
+
+Main Flow:
+
+User selects the option.
+
+System retrieves language speaker data.
+
+System sorts languages by number of speakers.
+
+System displays language names and statistics.
+
+Expected Outcome:
+
+User views sorted language speaker data.
+
+Exceptions:
+
+Data retrieval error: show message.
+
+Use Case 6: Generate Capital City Population Report
+Preconditions:
+
+User authenticated.
+
+Capital city population data available.
+
+Trigger:
+
+User selects "Capital City Population Report."
+
+Main Flow:
+
+User selects the report option.
+
+System fetches capital cities data.
+
+Data is sorted descending by population.
+
+System displays capital cities and populations.
+
+Expected Outcome:
+
+Report of capital cities shown to user.
+
+Exceptions:
+
+Database error: display error.
+
+Use Case 7: Export Report
+Preconditions:
+
+User has generated a report.
+
+Trigger:
+
+User selects "Export Report."
+
+Main Flow:
+
+User selects export format (PDF, Excel).
+
+System generates export file.
+
+System prompts user to save or opens file.
+
+Expected Outcome:
+
+Report is exported successfully.
+
+Exceptions:
+
+Export failure: notify user.
+
+Use Case 8: View Historical Population Trends
+Preconditions:
+
+User authenticated.
+
+Historical data available.
+
+Trigger:
+
+User selects "View Population Trends."
+
+Main Flow:
+
+User chooses a country or city.
+
+System retrieves historical population data.
+
+System displays trends in chart form.
+
+Expected Outcome:
+
+User views population trends over time.
+
+Exceptions:
+
+No data found: inform user.
+
+Use Case 9: Admin User Management
+Preconditions:
+
+Admin logged in.
+
+Trigger:
+
+Admin selects "Manage Users."
+
+Main Flow:
+
+Admin views user list.
+
+Admin adds, edits, or deletes users.
+
+System updates user database accordingly.
+
+System confirms changes.
+
+Expected Outcome:
+
+Admin manages users successfully.
+
+Exceptions:
+
+Operation failure: show error.
+
+Use Case 10: Password Reset
+Preconditions:
+
+User has an account.
+
+Trigger:
+
+User selects "Forgot Password."
+
+Main Flow:
+
+User inputs email or username.
+
+System verifies user identity.
+
+System sends password reset link or temporary password.
+
+User resets password using provided method.
+
+Expected Outcome:
+
+User resets password and regains access.
+
+Exceptions:
+
+Invalid email/username: prompt user.
+
+Email delivery failure: notify user.
